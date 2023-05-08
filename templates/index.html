@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+        function onDatasourceOptionChange(sel) {
+            let value = sel.value;
+            console.log(value);
+        }
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Wash transaction detector</h1>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <label for="data_type">Источник данных:</label>
+            </div>
+            <div class="col-2">
+                <select id="data_type" name="data_type" onchange="onDatasourceOptionChange(this)">
+                    <option value="server_link">WebSocket-сервер</option>
+                    <option value="file">Ссылка на файл</option>
+                </select>
+            </div>
+            <div class="col-9"/>
+        </div>
+        <div class="row" id="server_link">
+            <div class="col-2">
+                <input type="text" name="server_link_input"/>
+            </div>
+            <div class="col-10"/>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <button type="button" onclick="window.location.href='{{ url_for( 'toggle_recording') }}';">Forward</button>
+            </div>
+            <div class="col-11"/>
+        </div>
+        <p>Recorded: {{df_shape}}</p>
+    </div>
+</body>
+</html>
